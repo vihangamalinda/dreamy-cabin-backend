@@ -15,7 +15,7 @@ public class GuestServiceImpl implements GuestService {
 
     @Override
     public List<Guest> getAll() {
-        List<Guest> guests = this.guestRepository.findByIsActive();
+        List<Guest> guests = this.guestRepository.findByIsActiveTrue();
         return guests;
     }
 
