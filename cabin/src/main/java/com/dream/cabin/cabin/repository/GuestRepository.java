@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface GuestRepository extends JpaRepository<Guest, Long> {
-    List<Guest> findByIsActive();
+    List<Guest> findByIsActiveTrue();
 }
