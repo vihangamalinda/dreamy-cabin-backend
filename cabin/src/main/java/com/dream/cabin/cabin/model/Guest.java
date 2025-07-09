@@ -6,10 +6,6 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Setter
-@Getter
 @Builder
 public class Guest {
     @Id
@@ -29,6 +25,86 @@ public class Guest {
     private String nationalId;
     @Column(name = "is_active")
     private boolean isActive;
+
+    Guest() {
+        this.createdAt = new Date();
+    }
+
+
+    Guest(long id, String fullName, String emailAddress, String nationality, String countryFlag, String nationalId, boolean isActive) {
+        this.id = id;
+        this.createdAt = new Date();
+        this.fullName = fullName;
+        this.emailAddress = emailAddress;
+        this.nationality = nationality;
+        this.countryFlag = countryFlag;
+        this.nationalId = nationalId;
+        this.isActive = isActive;
+    }
+
+    public void setActive(final boolean active) {
+        this.isActive = active;
+    }
+
+    public void setId(final long id) {
+        this.id = id;
+    }
+
+    public void setCreatedAt(final Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setFullName(final String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setEmailAddress(final String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public void setNationality(final String nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setCountryFlag(final String countryFlag) {
+        this.countryFlag = countryFlag;
+    }
+
+    public void setNationalId(final String nationalId) {
+        this.nationalId = nationalId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public String getCountryFlag() {
+        return countryFlag;
+    }
+
+    public String getNationalId() {
+        return nationalId;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
 
     @Override
     public String toString() {
