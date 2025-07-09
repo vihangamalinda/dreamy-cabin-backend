@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/guests")
+@RequestMapping("v1/guests")
 public class GuestController {
     private final GuestService guestService;
 
@@ -35,7 +35,7 @@ public class GuestController {
         return ResponseEntity.ok(Map.of("hasCreated", true));
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteGuestById(final @PathVariable("id") long guestId) {
         this.guestService.deleteGuestById(guestId);
         return ResponseEntity.ok(Map.of("hasDeleted", true));
