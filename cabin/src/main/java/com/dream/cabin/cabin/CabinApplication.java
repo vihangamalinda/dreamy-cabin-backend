@@ -6,8 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CabinApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CabinApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CabinApplication.class, args);
+//		ApplicationContext applicationContext =new AnnotationConfigApplicationContext(Config.class);
+//		applicationContext.getBean("getCabinService", CabinService.class);
+    }
 
 }
