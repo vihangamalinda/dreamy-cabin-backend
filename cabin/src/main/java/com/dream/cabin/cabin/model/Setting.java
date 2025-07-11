@@ -6,6 +6,7 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "Setting")
 @Builder
 public class Setting {
     @Id
