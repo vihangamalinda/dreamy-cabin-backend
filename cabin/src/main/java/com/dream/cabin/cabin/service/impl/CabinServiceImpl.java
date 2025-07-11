@@ -1,5 +1,6 @@
 package com.dream.cabin.cabin.service.impl;
 
+import com.dream.cabin.cabin.exception.ResourceNotFoundException;
 import com.dream.cabin.cabin.model.Cabin;
 import com.dream.cabin.cabin.repository.CabinRepository;
 import com.dream.cabin.cabin.service.CabinService;
@@ -30,7 +31,7 @@ public class CabinServiceImpl implements CabinService {
 
     @Override
     public Cabin getCabinById(long cabinId) {
-        return cabinRepository.findById(cabinId).orElseThrow(RuntimeException::new);
+        return cabinRepository.findById(cabinId).orElseThrow(() -> new ResourceNotFoundException(String.format("Given Setting id was not found %d .", cabinId)));
     }
 
     @Override
