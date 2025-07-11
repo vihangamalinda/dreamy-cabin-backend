@@ -24,8 +24,8 @@ public class CabinServiceImpl implements CabinService {
     }
 
     @Override
-    public void createCabin(Cabin cabin) {
-        cabinRepository.save(cabin);
+    public Cabin createCabin(Cabin cabin) {
+        return cabinRepository.save(cabin);
     }
 
     @Override

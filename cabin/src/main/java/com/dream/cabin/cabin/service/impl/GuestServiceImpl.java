@@ -27,8 +27,8 @@ public class GuestServiceImpl implements GuestService {
     }
 
     @Override
-    public void createGuest(Guest guest) {
-        this.guestRepository.save(guest);
+    public Guest createGuest(Guest guest) {
+       return this.guestRepository.save(guest);
     }
 
     @Override

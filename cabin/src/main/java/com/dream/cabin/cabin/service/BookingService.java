@@ -10,7 +10,7 @@ public interface BookingService {
 
     void updateBookingStatus(Booking booking,long bookingId);
 
-    void createBooking(Booking booking);
+    Booking createBooking(Booking booking);
 
     void deleteBookingById(long id);
 }

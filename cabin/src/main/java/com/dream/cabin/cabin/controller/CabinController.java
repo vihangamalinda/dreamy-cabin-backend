@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,9 +31,11 @@ public class CabinController {
     }
 
     @PostMapping("/create")
-    public List<Cabin> createCabin(@RequestBody Cabin cabin) {
-        cabinService.createCabin(cabin);
-        return null;
+    public ResponseEntity<Cabin> createCabin(@RequestBody Cabin cabin) {
+       Cabin savedCabin = cabinService.createCabin(cabin);
+        String path =String.format("/%d",savedCabin.getId());
+        String uriLocation = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString().replace("/create","").concat(path);
+        return ResponseEntity.created(URI.create(uriLocation)).build();
     }
 
     @GetMapping("/{id}")

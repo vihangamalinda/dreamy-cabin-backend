@@ -4,7 +4,9 @@ import com.dream.cabin.cabin.model.Guest;
 import com.dream.cabin.cabin.service.GuestService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -30,9 +32,11 @@ public class GuestController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Map<String, Boolean>> createGuest(final @RequestBody Guest guest) {
-        this.guestService.createGuest(guest);
-        return ResponseEntity.ok(Map.of("hasCreated", true));
+    public ResponseEntity<Guest> createGuest(final @RequestBody Guest guest) {
+       Guest savedGuest = this.guestService.createGuest(guest);
+        String path =String.format("/%d",savedGuest.getId());
+        String uriLocation = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString().replace("/create","").concat(path);
+        return ResponseEntity.created(URI.create(uriLocation)).build();
     }
 
     @DeleteMapping("/delete/{id}")

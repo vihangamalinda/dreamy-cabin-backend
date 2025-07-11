@@ -9,7 +9,7 @@ public interface GuestService {
 
     Guest getGuestById(final long guestId);
 
-    void createGuest(final Guest guest);
+    Guest createGuest(final Guest guest);
 
     void deleteGuestById(final long guestId);
 }

@@ -8,7 +8,7 @@ import java.util.List;
 public interface CabinService {
     List<Cabin> getAllCabins();
 
-    void createCabin(Cabin cabin);
+    Cabin createCabin(Cabin cabin);
 
     Cabin getCabinById(long cabinId);
 

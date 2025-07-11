@@ -5,7 +5,9 @@ import com.dream.cabin.cabin.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -33,9 +35,11 @@ public class BookingController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Map<String, Boolean>> createBooking(@RequestBody final Booking booking) {
-        bookingService.createBooking(booking);
-        return ResponseEntity.ok(Map.of("hasCreated", true));
+    public ResponseEntity<Booking> createBooking(@RequestBody final Booking booking) {
+        Booking savedBooking =bookingService.createBooking(booking);
+        String path =String.format("/%d",savedBooking.getId());
+        String uriLocation = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString().replace("/create","").concat(path);
+        return ResponseEntity.created(URI.create(uriLocation)).build();
     }
 
     @PutMapping("/update/{bookingId}/status")
