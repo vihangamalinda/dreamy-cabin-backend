@@ -1,6 +1,8 @@
 package com.dream.cabin.cabin.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Date;
@@ -16,8 +18,10 @@ public class Guest {
     @Column(name = "created_at")
     private Date createdAt;
     @Column(name = "full_name")
+    @Size(min = 2)
     private String fullName;
     @Column(name = "email_address")
+    @Email
     private String emailAddress;
     @Column(name = "nationality")
     private String nationality;
