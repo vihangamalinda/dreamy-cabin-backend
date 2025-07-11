@@ -3,6 +3,8 @@ package com.dream.cabin.cabin.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Cabin")
@@ -27,6 +29,9 @@ public class Cabin {
 
     @Column(name = "created_at")
     final private Date createdAt;
+
+    @ManyToMany(mappedBy = "cabinSet")
+    private Set<Booking> bookingSet = new HashSet<>();
 
     public Cabin() {
         this.createdAt = new Date();

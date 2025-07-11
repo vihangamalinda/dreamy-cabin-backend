@@ -26,6 +26,8 @@ public class Guest {
     private String nationalId;
     @Column(name = "is_active")
     private boolean isActive;
+    @OneToMany(mappedBy = "guest")
+    private List<Booking> bookingList;
 
     Guest() {
         this.createdAt = new Date();
