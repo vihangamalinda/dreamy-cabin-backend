@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Builder
@@ -47,6 +48,17 @@ public class Guest {
 
     public void setActive(final boolean active) {
         this.isActive = active;
+    }
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     public void setId(final long id) {
@@ -105,9 +117,7 @@ public class Guest {
         return nationalId;
     }
 
-    public boolean getIsActive() {
-        return isActive;
-    }
+
 
     @Override
     public String toString() {
