@@ -23,7 +23,7 @@ public class GuestServiceImpl implements GuestService {
     @Override
     public Guest getGuestById(long guestId) {
         Guest guest = this.guestRepository.findById(guestId)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Given Setting id was not found %d .", guestId)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Given Guest id was not found %d .", guestId)));
         return guest;
     }
 

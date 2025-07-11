@@ -31,7 +31,7 @@ public class CabinServiceImpl implements CabinService {
 
     @Override
     public Cabin getCabinById(long cabinId) {
-        return cabinRepository.findById(cabinId).orElseThrow(() -> new ResourceNotFoundException(String.format("Given Setting id was not found %d .", cabinId)));
+        return cabinRepository.findById(cabinId).orElseThrow(() -> new ResourceNotFoundException(String.format("Given Cabin id was not found %d .", cabinId)));
     }
 
     @Override

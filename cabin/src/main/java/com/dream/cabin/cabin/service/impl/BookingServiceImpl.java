@@ -21,7 +21,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking getBookingsById(long bookingId) {
-        return this.bookingRepository.findById(bookingId).orElseThrow(() -> new ResourceNotFoundException(String.format("Given Setting id was not found %d .", bookingId)));
+        return this.bookingRepository.findById(bookingId).orElseThrow(() -> new ResourceNotFoundException(String.format("Given Booking id was not found %d .", bookingId)));
     }
 
     @Override
