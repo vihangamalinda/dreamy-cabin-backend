@@ -7,7 +7,7 @@ import java.util.List;
 public interface SettingService {
     Setting getSettingById(final long settingId);
 
-    void createSetting(Setting setting);
+    Setting createSetting(Setting setting);
 
     List<Setting> getAll();
 }

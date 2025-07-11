@@ -4,7 +4,9 @@ import com.dream.cabin.cabin.model.Setting;
 import com.dream.cabin.cabin.service.SettingService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +32,10 @@ public class SettingController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Map<String, Boolean>> createSetting(@RequestBody final Setting setting) {
-        this.settingService.createSetting(setting);
-        return ResponseEntity.ok(Map.of("hasCreated", true));
+    public ResponseEntity<Setting> createSetting(@RequestBody final Setting setting) {
+        Setting savedSettings = this.settingService.createSetting(setting);
+        String location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedSettings.getId()).toString().replace("/create", "");
+
+        return ResponseEntity.created(URI.create(location)).build();
     }
 }

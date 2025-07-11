@@ -19,8 +19,8 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public void createSetting(Setting setting) {
-        this.settingRepository.save(setting);
+    public Setting createSetting(Setting setting) {
+       return this.settingRepository.save(setting);
     }
 
     @Override
