@@ -2,6 +2,7 @@ package com.dream.cabin.cabin.controller;
 
 import com.dream.cabin.cabin.model.Guest;
 import com.dream.cabin.cabin.service.GuestService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -32,7 +33,7 @@ public class GuestController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Guest> createGuest(final @RequestBody Guest guest) {
+    public ResponseEntity<Guest> createGuest(@Valid  final @RequestBody Guest guest) {
        Guest savedGuest = this.guestService.createGuest(guest);
         String path =String.format("/%d",savedGuest.getId());
         String uriLocation = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString().replace("/create","").concat(path);
