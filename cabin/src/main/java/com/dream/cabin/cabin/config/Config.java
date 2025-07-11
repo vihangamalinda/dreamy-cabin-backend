@@ -1,11 +1,14 @@
 package com.dream.cabin.cabin.config;
 
+import com.dream.cabin.cabin.repository.BookingRepository;
 import com.dream.cabin.cabin.repository.CabinRepository;
 import com.dream.cabin.cabin.repository.GuestRepository;
 import com.dream.cabin.cabin.repository.SettingRepository;
+import com.dream.cabin.cabin.service.BookingService;
 import com.dream.cabin.cabin.service.CabinService;
 import com.dream.cabin.cabin.service.GuestService;
 import com.dream.cabin.cabin.service.SettingService;
+import com.dream.cabin.cabin.service.impl.BookingServiceImpl;
 import com.dream.cabin.cabin.service.impl.CabinServiceImpl;
 import com.dream.cabin.cabin.service.impl.GuestServiceImpl;
 import com.dream.cabin.cabin.service.impl.SettingServiceImpl;
@@ -27,6 +30,11 @@ public class Config {
     @Bean
     public SettingService getSettingService(SettingRepository settingRepository) {
         return new SettingServiceImpl(settingRepository);
+    }
+
+    @Bean
+    public BookingService getBookingService(BookingRepository bookingRepository) {
+        return new BookingServiceImpl(bookingRepository);
     }
 }
 
