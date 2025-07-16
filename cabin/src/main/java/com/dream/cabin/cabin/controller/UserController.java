@@ -27,11 +27,11 @@ public class UserController {
         return ResponseEntity.ok(userList);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = this.userService.createUser(user);
         String currentUri = ServletUriComponentsBuilder.fromCurrentRequestUri().toUriString();
-        URI uri = URI.create(currentUri.replace("/add", String.format("/%d", savedUser.getId())));
+        URI uri = URI.create(currentUri.replace("/create", String.format("/%d", savedUser.getId())));
         return ResponseEntity.created(uri).build();
     }
 
