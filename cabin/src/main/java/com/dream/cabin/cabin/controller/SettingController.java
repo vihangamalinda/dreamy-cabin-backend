@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("v1/settings")
+@CrossOrigin(origins = "http://localhost:5173")
 public class SettingController {
     private final SettingService settingService;
 
@@ -38,4 +39,9 @@ public class SettingController {
 
         return ResponseEntity.created(URI.create(location)).build();
     }
+
+    /*
+    @PutMapping(
+    Settings TODO
+            */
 }

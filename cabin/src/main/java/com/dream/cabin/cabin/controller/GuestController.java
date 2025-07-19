@@ -13,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("v1/guests")
+@CrossOrigin(origins = "http://localhost:5173")
 public class GuestController {
     private final GuestService guestService;
 

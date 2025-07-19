@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("v1/cabins")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CabinController {
     private CabinService cabinService;
 
