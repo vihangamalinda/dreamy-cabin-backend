@@ -21,11 +21,22 @@ public class Cabin {
     private String description;
     @Column(name = "max_capacity")
     private int maxCapacity;
+
+    @Column(name = "regular_price")
+    private Double regularPrice;
+
     @Column(name = "discount")
     private int discount;
     @Column(name = "is_active")
     private boolean isActive;
 
+    public Double getRegularPrice() {
+        return regularPrice;
+    }
+
+    public void setRegularPrice(Double regularPrice) {
+        this.regularPrice = regularPrice;
+    }
 
     @Column(name = "created_at")
     final private Date createdAt;
@@ -37,16 +48,25 @@ public class Cabin {
         this.createdAt = new Date();
     }
 
-    public Cabin(int id, String name, String location, String detail) {
+    public Cabin(int id, String name, String location, String detail,double regularPrice) {
         this.id = id;
         this.name = name;
         this.imageUrl = location;
         this.description = detail;
         this.createdAt = new Date();
+        this.regularPrice = regularPrice;
     }
 
     public int getDiscount() {
         return this.discount;
+    }
+
+    public Set<Booking> getBookingSet() {
+        return bookingSet;
+    }
+
+    public void setBookingSet(Set<Booking> bookingSet) {
+        this.bookingSet = bookingSet;
     }
 
     public void setDiscount(int discount) {
